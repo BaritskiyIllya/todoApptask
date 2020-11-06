@@ -1,0 +1,36 @@
+<div class="card-header d-flex justify-content-between">
+  <h5 class="m-0 text-dark">Todo Lists</h5>
+  <%= form_for @new_todo_list, remote: true do |f| %>
+    <div class="input-group mb-0">
+      <%= f.text_field :title, :size => "50", class: 'form-control', placeholder: 'Add a todo list' %>
+      <div class="input-group-append">
+        <%= f.submit "Add a todo list", remote: true, class: "btn btn-primary input-group-btn"%>
+      </div>
+    </div>
+  <% end %>
+
+</div>
+<div class="card-body">
+  <ul class="list-group">
+    <% @todo_lists.each do |todo_list| %>
+      <% if todo_list.user == current_user %>
+        <%= link_to todo_list, class: 'text-decoration-none' do %>
+          <li class="list-group-item d-flex justify-content-between">
+            <div>
+              <h6 class="m-0 text-dark">
+                <b><%= todo_list.title %></b>
+                <span class="badge badge-<%= todo_list.badge_color %>"><%= todo_list.status %></span>
+              </h6>
+              <p class="text-secondary m-0"><small><%= todo_list.percent_complete %>% Complete (<%= todo_list.completed_items %>/<%= todo_list.total_items %> Todo Items)</small></p>
+            </div>
+            <%= link_to [@todo_items, todo_list],class: "btn btn-primary", remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </li>
+
+        <% end %>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+

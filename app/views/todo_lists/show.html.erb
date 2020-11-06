@@ -1,0 +1,104 @@
+<% if @todo_list.user == current_user %>
+  <div class="card-header">
+    <div class="row">
+      <div class="col-1">
+        <%= link_to todo_lists_path, class: 'btn btn-dark' do %>
+          <i class="fas fa-angle-left"></i>
+        <% end %>
+      </div>
+      <div class="col-11">
+        <div class="d-flex justify-content-between">
+          <div>
+            <h5 class="m-0">
+              <b><%= @todo_list.title %></b>
+              <span class="badge badge-<%= @todo_list.badge_color %>"><%= @todo_list.status %></span>
+            </h5>
+            <p class="text-secondary m-0"><small><%= @todo_list.percent_complete %>% Complete (<%= @todo_list.completed_items %>/<%= @todo_list.total_items %> Todo Items)</small></p>
+          </div>
+          <div>
+            <%= link_to 'Edit', edit_todo_list_path(@todo_list), class: 'btn btn-secondary' %>
+          </div>
+          </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card-body">
+    <div class="progress ">
+      <div class="progress-bar bg-info" role="progressbar" style="width: <%= @todo_list.percent_complete %>%" aria-valuenow="<%= @todo_list.percent_complete %>" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <%= form_for([@todo_list, @todo_item], remote: true) do |f| %>
+      <div class="input-group mt-4 ">
+        <%= f.text_field :description, class: 'form-control', placeholder: 'Add a todo item' %>
+        <div class="input-group-append">
+          <%= f.submit "Add TooDoo", class: "btn btn-info input-group-btn"%>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col-md-12  mt-2">
+          <div class="d-flex justify-content-center" >
+            <p >Deadline: &nbsp;&nbsp;</p>
+            <div>
+              <%= f.datetime_select :completed_at, class: 'align-middle' %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div data-controller="tasks">
+      <ul id="tasks-list" class="list-group" data-action="drop->tasks#sort">
+        <% @todo_list.todo_items.order(position: :asc).each do |todo_item| %>
+          <% if todo_item.completed? %>
+            <li class="list-group-item bg-light task-item" data-task-id="<%= todo_item.id %>">
+              <div class="d-flex justify-content-between">
+              <span class="text-muted">
+                <em><strike><%= todo_item.description %></strike></em>
+              </span>
+                <div>
+                  <%= link_to (fa_icon "arrows-alt-v"), class: 'btn btn-secondary btn-sm pull-right handle' do %>
+                    <i class="fas fa-arrows-alt-v"></i>
+                  <% end %>
+                  <%= link_to (fa_icon "undo"), completed_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch, class: 'btn btn-dark btn-sm pull-right handle', remote: true %>
+                  <%= link_to (fa_icon "trash-alt"), [todo_item.todo_list, todo_item], class: 'btn btn-danger btn-sm pull-right', remote: true, method: :delete %>
+                </div>
+              </div>
+            </li>
+          <% else %>
+            <li class="list-group-item task-item" data-task-id="<%= todo_item.id %>">
+              <div class="d-flex justify-content-between " style="align-items: center;">
+            <span>
+              <%= todo_item.description %>
+            </span>
+                <div>
+                  <div style="display: flex; justify-content: space-between;">
+                    <%= link_to '#', class: 'btn btn-secondary btn-sm pull-right handle' do %>
+                      <i class="fas fa-arrows-alt-v"></i>
+                    <% end %>
+                    <%= link_to (fa_icon "pencil"), edit_todo_list_todo_item_path(todo_item.todo_list, todo_item),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-warning btn-sm pull-right'} %>
+                    <%= link_to (fa_icon "check"), completed_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch, class: 'btn btn-info btn-sm handle', remote: true %>
+                    <%= link_to (fa_icon "pencil"), edit_todo_list_todo_item_path(todo_item.todo_list, todo_item),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-warning btn-sm pull-right'} %>
+                  </div>
+                  <div class="badge badge-danger text-wrap btn btn-warning btn-sm pull-right">
+                    <%= todo_item.completed_at %>
+                  </div>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+
+        </div>
+      </div>
+    </div>
+  </div>
+    <% end %>
+<% end %>

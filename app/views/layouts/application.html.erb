@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>StimulusToodoo</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">-->
+    <script src="https://kit.fontawesome.com/9b146b4512.js" crossorigin="anonymous"></script>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="bg-light">
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-10 col-lg-8 offset-md-1 offset-lg2">
+        <p id="notice"><%= notice %></p>
+        <% if user_signed_in? %>
+          <div class="font-weight-bold">loged as:
+            <div class="badge badge-primary text-wrap" style="width: 6rem;">
+              <%= current_user.email %>
+            </div>
+          </div>
+
+          <%= link_to "Sign out", destroy_user_session_path, class: "btn btn-info btn-sm", :method => :delete %>
+        <% else %>
+        <% end %>
+        <div class="card mt-5">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--  <p class="notice"><%#= notice %></p>-->
+<!--  <p class="alert"><%#= alert %></p>-->
+  </body>
+</html>

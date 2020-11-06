@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="testtdev@127.0.0.1" uuid="a9e0aeb7-cf33-480a-ad6e-054f8ec27c13">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/testtdev</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="t2_dev@127.0.0.1" uuid="ba73e8e3-08c8-4fb1-b3ea-8e1ce0df4b60">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/t2_dev</jdbc-url>
+    </data-source>
+  </component>
+</project>

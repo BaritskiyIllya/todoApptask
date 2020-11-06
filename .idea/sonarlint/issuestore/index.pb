@@ -1,0 +1,25 @@
+
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+7
+Gemfile,d\e\de3150c01c3a946a6168173c4116741379fe3579
+^
+.db/migrate/20201028073159_create_todo_items.rb,4\2\4243126adfa7075ca7ac3b0e6ffb9d995ef0aa33
+X
+(app/controllers/todo_items_controller.rb,7\0\70c0de6e5a31a4a41de98962558124c2196150ec
+S
+#app/views/todo_items/index.html.erb,0\0\006b8736539e38003c380a5b3975931386c18cd4
+S
+#app/views/todo_lists/_form.html.erb,b\1\b1a02c32fc7b72cc407c14c5afb034948e20e493
+S
+#app/views/todo_items/_form.html.erb,9\3\93b76be0c5ad51a54b055f97d6cf0c5513503401
+Y
+)app/views/todo_items/_edit_modal.html.erb,7\3\73ab26d2356aa960692e383dce813f13983d2e2e
+Q
+!app/views/todo_items/new.html.erb,c\6\c6a69b53aaefa8b8e5917f6a64e7850f770da7e2
+@
+config/cable.yml,4\4\44bb44c06ebf3546d3fa0b6c4fc0a4d3bd160834
+C
+config/database.yml,2\c\2c912561029efc03ffae15b01b7337417d7a99bd
+R
+"app/views/todo_lists/show.html.erb,4\0\4074d0bbd846ea04ae9903e1a4e6ac39c421e052

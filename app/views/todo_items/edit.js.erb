@@ -1,0 +1,3 @@
+$('#editModal .modal-content').html('<%= j (render 'todo_items/edit_modal', todo_item: @todo_item) %>');
+$('#editModal').modal('show')
+$('#editModal').slideDown(150)

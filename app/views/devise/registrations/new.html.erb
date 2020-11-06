@@ -1,0 +1,55 @@
+<%= javascript_pack_tag 'devisecss', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+<!--  <div class="field">-->
+<!--    <%#= f.label :email %><br />-->
+    <%#= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<!--  </div>-->
+
+<!--  <div class="field">-->
+    <%#= f.label :password %>
+    <%# if @minimum_password_length %>
+<!--    <em>(<%#= @minimum_password_length %> characters minimum)</em>-->
+<!--    <%# end %><br />-->
+    <%#= f.password_field :password, autocomplete: "new-password" %>
+<!--  </div>-->
+
+<!--  <div class="field">-->
+<!--    <%#= f.label :password_confirmation %><br />-->
+    <%#= f.password_field :password_confirmation, autocomplete: "new-password" %>
+<!--  </div>-->
+
+<!--  <div class="actions">-->
+    <%#= f.submit "Sign up" %>
+<!--  </div>-->
+
+
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <div class="fadeIn first">
+        <h1><span class="badge badge-info">ToDO</span>  App</h1>
+      </div>
+
+      <form>
+        <%= f.email_field :email, class: "fadeIn second form-control devise",  placeholder: "login" %>
+        <%= f.password_field :password, class: "fadeIn third form-control devise", placeholder: "password" %>
+        <%= f.password_field :password_confirmation, class: "fadeIn third form-control devise", placeholder: "password confirmation" %>
+        <%= f.submit "Register", class: "fadeIn fourth btn btn-primary" %>
+      </form>
+
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <%= link_to "Log in", new_session_path(resource_name) %>
+      </div>
+
+    </div>
+  </div>
+
+
+<% end %>
+
+<%#= render "devise/shared/links" %>
