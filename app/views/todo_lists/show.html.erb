@@ -77,7 +77,6 @@
                     <% end %>
                     <%= link_to (fa_icon "pencil"), edit_todo_list_todo_item_path(todo_item.todo_list, todo_item),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-warning btn-sm pull-right'} %>
                     <%= link_to (fa_icon "check"), completed_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch, class: 'btn btn-info btn-sm handle', remote: true %>
-                    <%= link_to (fa_icon "pencil"), edit_todo_list_todo_item_path(todo_item.todo_list, todo_item),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-warning btn-sm pull-right'} %>
                   </div>
                   <div class="badge badge-danger text-wrap btn btn-warning btn-sm pull-right">
                     <%= todo_item.completed_at %>
